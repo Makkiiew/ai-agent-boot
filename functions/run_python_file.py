@@ -1,6 +1,24 @@
 import os
 import subprocess
 
+def schema_run_python_file():
+    return {
+        "name": "run_python_file",
+        "description": "Execute a Python file with optional arguments.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "file_path": {"type": "string", "description": "The path to the .py file to run."},
+                "args": {
+                    "type": "array",
+                    "items": {"type": "string"},
+                    "description": "A list of command-line arguments to pass to the script."
+                }
+            },
+            "required": ["file_path"],
+        },
+    }
+
 def run_python_file(working_directory, file_path, args=None):
     try:
         working_dir_abs = os.path.abspath(working_directory)

@@ -1,6 +1,19 @@
 import os
 from config import MAX_CHARS
 
+def schema_get_file_content():
+    return {
+        "name": "get_file_content",
+        "description": "Read the contents of a specific file.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "file_path": {"type": "string", "description": "The path to the file to be read."}
+            },
+            "required": ["file_path"],
+        },
+    }
+
 def get_file_content(working_directory, file_path):
     try:
         working_dir_abs = os.path.abspath(working_directory)
