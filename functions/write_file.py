@@ -1,5 +1,19 @@
 import os
 
+def schema_write_file():
+    return {
+        "name": "write_file",
+        "description": "Write or overwrite content to a specific file.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "file_path": {"type": "string", "description": "The destination path for the file."},
+                "content": {"type": "string", "description": "The text content to be written to the file."}
+            },
+            "required": ["file_path", "content"],
+        },
+    }
+
 def write_file(working_directory, file_path, content):
     try:
         working_dir_abs = os.path.abspath(working_directory)
